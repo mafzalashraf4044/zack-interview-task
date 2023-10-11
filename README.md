@@ -8,19 +8,15 @@ This repository contains two main components: the `frontend` and the `backend`.
 
 The frontend part of the project is built using React (Vite), React-Bootstrap, and Tailwind CSS. To start the frontend, follow these steps:
 
-1. Navigate to the `frontend` directory:
-
-```bash
-cd frontend
-```
-
-1. Install the required dependencies:
-
+1. Navigate to the `backend` directory:
+   ```bash
+   cd frontend
+   ```
+2. Install the required dependencies:
    ```bash
    npm install
    ```
-2. Start the frontend development server:
-
+3. Start the backend server:
    ```bash
    npm run dev
    ```
@@ -59,32 +55,32 @@ The backend of this project provides a simple API for fetching top stories from 
 
   - `section` (required): The section of the top stories to fetch. You can choose from the following sections:
 
-    - Arts
-    - Automobiles
-    - BooksReview
-    - Business
-    - Fashion
-    - Food
-    - Health
-    - Home
-    - Insider
-    - Magazine
-    - Movies
-    - NYRegion
-    - Obituaries
-    - Opinion
-    - Politics
-    - RealEstate
-    - Science
-    - Sports
-    - SundayReview
-    - Technology
-    - Theater
-    - TMagazine
-    - Travel
-    - Upshot
-    - US
-    - World
+    - arts
+    - automobiles
+    - booksReview
+    - business
+    - fashion
+    - food
+    - health
+    - home
+    - insider
+    - magazine
+    - movies
+    - nyregion
+    - obituaries
+    - opinion
+    - politics
+    - realestate
+    - science
+    - sports
+    - sundayreview
+    - technology
+    - theater
+    - t-Magazine
+    - travel
+    - upshot
+    - us
+    - world
 
 #### Response
 
@@ -108,6 +104,15 @@ The backend of this project provides a simple API for fetching top stories from 
   }
   ```
 
-### Getting Started
+### Request and Response Formats
+
+Feel free to explore both the frontend and backend components to understand how they work together to provide news and stories data.
+
+## Getting Started
 
 To set up the project and run both the frontend and backend, follow the instructions provided for each component. Once both parts are up and running, you can interact with the application to fetch and display news and stories.
+
+```
+
+Please replace `"frontend"` and `"backend"` with your actual folder names if they are different. Additionally, make sure to provide any other instructions specific to your project, such as environment variables or configurations, as needed.
+```
