@@ -9,6 +9,8 @@ import { getNewsTopStories } from "@common/api";
 import { NewsSection } from "@common/enums";
 
 import NewsList from "./NewsList";
+import SectionSelector from "./SectionSelector";
+import { NewsItem } from "@common/interfaces";
 
 export default function Home() {
   const [section, setSection] = useState<NewsSection>(NewsSection.Home);
@@ -27,13 +29,20 @@ export default function Home() {
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
     }
-  );
+  ) as { data: NewsItem[] };
+
+  const handleSectionChange = (section: NewsSection) => {
+    setSection(section);
+  };
 
   return (
     <Container fluid className="px-10">
       <Card className="my-10">
-        <Card.Body className="flex flex-row justify-between items-center">
-          <p className="font-bold">Section: </p>
+        <Card.Body className="flex flex-column justify-center flex-start">
+          <Card.Title className="mb-2 text-xl font-bold tracking-tight text-left">
+            Section
+          </Card.Title>
+          <SectionSelector section={section} onChange={handleSectionChange} />
         </Card.Body>
       </Card>
 
