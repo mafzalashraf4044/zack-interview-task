@@ -7,7 +7,10 @@ interface NewsSectionSelectProps {
   onChange: (value: NewsSection) => void;
 }
 
-const SectionSelector = ({ section, onChange }: NewsSectionSelectProps) => {
+const SectionSelector: React.FC<NewsSectionSelectProps> = ({
+  section,
+  onChange,
+}: NewsSectionSelectProps) => {
   const handleChange = (e) => {
     const { value } = e.target;
 

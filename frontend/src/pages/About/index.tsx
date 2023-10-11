@@ -4,25 +4,39 @@ export default function About() {
   return (
     <Card className="m-10">
       <Card.Header className="flex flex-row justify-start items-center">
-        About
+        About Our Top News App
       </Card.Header>
       <Card.Body>
         <Card.Text className="text-left">
-          At Email App, we are building a next-generation email sending service
-          that is fast, scalable, and reliable. Our service uses a distributed
-          architecture with Kafka to handle email sending in near real time.
+          Welcome to Our Top News App! We bring you the latest and most exciting
+          news from around the world in one convenient place.
           <br />
           <br />
-          To send a batch of emails, simply enter the number of emails you want
-          to send in the input box and click the "Submit" button. We will then
-          generate a job ID and add the job to the Kafka queue. Our workers will
-          pick up the job from the queue and send the emails. You can view the
-          status of your job in near real time by refreshing the page.
+          Our mission is to keep you informed, entertained, and connected with
+          the news that matter. We use the power of technology to provide you
+          with fast, scalable, and reliable news updates.
           <br />
           <br />
-          You can also close the browser and come back later to check the status
-          of your job. We will store the status of your job in the database, so
-          you will always be able to see the progress of your email send.
+          Here's how it works:
+          <ul>
+            <li>
+              Explore our selection of top news covering a wide range of topics,
+              from business to sports to technology.
+            </li>
+            <li>
+              Click on any news card to read the full article and stay
+              up-to-date with the latest developments.
+            </li>
+          </ul>
+          <br />
+          Our team is dedicated to bringing you the news you care about. We
+          value your time and aim to make your news-reading experience seamless.
+          Whether you're on your computer or mobile device, our app is designed
+          for your convenience.
+          <br />
+          <br />
+          Thank you for choosing Our Top News App. We're excited to be your
+          source for the latest news from around the globe.
         </Card.Text>
       </Card.Body>
     </Card>
