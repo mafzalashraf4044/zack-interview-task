@@ -2,7 +2,9 @@ import { API_BASE_URL } from "@common/constants";
 import { NewsItem } from "@common/interfaces";
 import { NewsSection } from "@common/enums";
 
-export const getNewsTopStories = async (section: NewsSection): NewsItem => {
+export const getNewsTopStories = async (
+  section: NewsSection
+): Promise<NewsItem> => {
   const response = await fetch(
     `${API_BASE_URL}/news/top-stories?section=${section}`,
     {

@@ -11,7 +11,7 @@ const SectionSelector: React.FC<NewsSectionSelectProps> = ({
   section,
   onChange,
 }: NewsSectionSelectProps) => {
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
     onChange(value as NewsSection);

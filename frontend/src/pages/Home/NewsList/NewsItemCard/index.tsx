@@ -1,7 +1,7 @@
-import React from "react";
 import Card from "react-bootstrap/Card";
 import { format } from "date-fns";
 
+import { NewsItem } from "@common/interfaces";
 import { truncateText } from "@common/utils";
 
 interface NewsItemProps {

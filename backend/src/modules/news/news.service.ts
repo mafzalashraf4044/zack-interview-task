@@ -13,6 +13,12 @@ import { NewsItem, ToppStoriesResult, MultimediaItem } from './interfaces';
 export default class UserService {
   constructor(private configService: ConfigService) {}
 
+  /**
+   * Fetches top stories from the New York Times API based on the provided section.
+   * @param section - The section for which to fetch top stories.
+   * @returns A promise that resolves to an array of NewsItem objects.
+   * @throws An error if the request to the API fails.
+   */
   async getTopStories({ section }: GetTopStoriesDTO): Promise<NewsItem[]> {
     const nyTimesAPIKey = this.configService.get<string>('nyTimesAPIKey');
     const url = `${NY_TIMES_TOP_STORIES_API_URL}/${section}.json?api-key=${nyTimesAPIKey}`;
@@ -24,13 +30,17 @@ export default class UserService {
     }
 
     const { results } = await response.json();
-
-    return this.transform(results);
+    const filtered = this.filter(results);
+    return this.transform(filtered);
   }
 
-  private transform(results: ToppStoriesResult[]): NewsItem[] {
-    // filtering invalid results
-    const filtered = results.filter(
+  /**
+   * Filters out invalid ToppStoriesResult objects.
+   * @param results - An array of ToppStoriesResult objects.
+   * @returns An array of valid ToppStoriesResult objects.
+   */
+  private filter(results: ToppStoriesResult[]): ToppStoriesResult[] {
+    return results.filter(
       (result: ToppStoriesResult) =>
         result.title &&
         result.section &&
@@ -38,8 +48,15 @@ export default class UserService {
         result.byline &&
         result.url,
     );
+  }
 
-    return filtered.map((result: ToppStoriesResult) => {
+  /**
+   * Transforms valid ToppStoriesResult objects into NewsItem objects.
+   * @param results - An array of valid ToppStoriesResult objects.
+   * @returns An array of NewsItem objects.
+   */
+  private transform(filteredResults: ToppStoriesResult[]): NewsItem[] {
+    return filteredResults.map((result: ToppStoriesResult) => {
       const newsItem: NewsItem = {
         title: result.title,
         section: result.section,
@@ -55,6 +72,11 @@ export default class UserService {
     });
   }
 
+  /**
+   * Gets the image URL from the provided multimedia items.
+   * @param multimedia - An array of MultimediaItem objects.
+   * @returns The URL of the image, or an empty string if not found.
+   */
   private getImageUrl(multimedia: MultimediaItem[]): string {
     if (!multimedia) {
       return '';
