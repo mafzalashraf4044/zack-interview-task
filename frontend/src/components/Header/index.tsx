@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <Navbar bg="dark" data-bs-theme="dark" expand="lg">
+    <Navbar className="bg-gray-800" data-bs-theme="dark" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/home">
           News App

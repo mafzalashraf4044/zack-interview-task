@@ -1,1 +1,1 @@
-export * from "./bulkEmailJob";
+export * from "./news";

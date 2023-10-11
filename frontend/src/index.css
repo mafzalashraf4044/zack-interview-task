@@ -25,3 +25,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+.news-item-card {
+  height: 700px;
+}

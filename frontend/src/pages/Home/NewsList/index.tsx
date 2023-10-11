@@ -1,41 +1,70 @@
-import React from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import moment from "moment";
 
-import { NewsItem } from '@common/interfaces'
+import { format } from "date-fns";
 
-const NewsItem = ({ news: NewsItem[] }) => {
+import { NewsItem } from "@common/interfaces";
+import { truncateText } from "@common/utils";
+
+interface NewsListProps {
+  news: NewsItem[];
+}
+
+const NewsList = ({ news }: NewsListProps) => {
   const formatPublishedDate = (publishedAt: string) => {
-    return moment(publishedAt).format("MMMM D, YYYY h:mm A");
+    return format(new Date(publishedAt), "MMMM d, yyyy h:mm a");
   };
 
   return (
     <Row className="flex-wrap">
-      {stories.map((story, index) => (
-        <Col key={index} xs={12} sm={6} lg={4}>
-          <Card>
-            {story.image && (
-              <Card.Img variant="top" src={story.image} alt={story.title} />
+      {news.map((newsItem, index) => (
+        <Col key={index} xs={12} sm={6} lg={4} className="mb-4">
+          <Card className="news-item-card max-w border rounded-lg shadow bg-gray-800 border-gray-700">
+            {newsItem.image && (
+              <Card.Img
+                variant="top"
+                src={newsItem.image}
+                alt={newsItem.title}
+                className="rounded-t-lg"
+              />
             )}
-            <Card.Body>
-              <Card.Title>{story.title}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">
-                {formatPublishedDate(story.publishedAt)}
+            <Card.Body className="p-4">
+              <Card.Title className="mb-2 text-2xl font-bold tracking-tight text-white text-left">
+                {newsItem.title}
+              </Card.Title>
+              <Card.Subtitle className="mb-4 text-sm text-gray-600 text-left">
+                {formatPublishedDate(newsItem.publishedAt)}
               </Card.Subtitle>
-              <Card.Text>{story.abstract}</Card.Text>
-              <Card.Subtitle className="mb-2 text-muted">
-                {story.section}
-                {story.subSection && ` - ${story.subSection}`}
-              </Card.Subtitle>
-              <Card.Subtitle className="mb-2 text-muted">
-                Author: {story.author}
+              <Card.Text className="mb-4 font-normal text-gray-400 text-left">
+                {truncateText(newsItem.abstract, 100)}
+              </Card.Text>
+              <Card.Subtitle className="mb-2 text-sm text-gray-600 text-left">
+                Author: {newsItem.author}
               </Card.Subtitle>
             </Card.Body>
-            <Card.Footer>
-              <a href={story.url} className="card-link">
-                Read More
+            <Card.Footer className="p-4 flex">
+              <a
+                href={newsItem.url}
+                target="_blank"
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Read more
+                <svg
+                  className="w-3.5 h-3.5 ml-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
               </a>
             </Card.Footer>
           </Card>
@@ -45,4 +74,4 @@ const NewsItem = ({ news: NewsItem[] }) => {
   );
 };
 
-export default NewsCardList;
+export default NewsList;
