@@ -111,8 +111,3 @@ Feel free to explore both the frontend and backend components to understand how 
 ## Getting Started
 
 To set up the project and run both the frontend and backend, follow the instructions provided for each component. Once both parts are up and running, you can interact with the application to fetch and display news and stories.
-
-```
-
-Please replace `"frontend"` and `"backend"` with your actual folder names if they are different. Additionally, make sure to provide any other instructions specific to your project, such as environment variables or configurations, as needed.
-```
