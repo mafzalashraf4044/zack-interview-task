@@ -1,1 +1,1 @@
-export * from './request-with-user.interface';
+export * from './news-item.interface';
