@@ -29,7 +29,17 @@ export default class UserService {
   }
 
   private transform(results: ToppStoriesResult[]): NewsItem[] {
-    return results.map((result: ToppStoriesResult) => {
+    // filtering invalid results
+    const filtered = results.filter(
+      (result: ToppStoriesResult) =>
+        result.title &&
+        result.section &&
+        result.abstract &&
+        result.byline &&
+        result.url,
+    );
+
+    return filtered.map((result: ToppStoriesResult) => {
       const newsItem: NewsItem = {
         title: result.title,
         section: result.section,
@@ -46,6 +56,10 @@ export default class UserService {
   }
 
   private getImageUrl(multimedia: MultimediaItem[]): string {
+    if (!multimedia) {
+      return '';
+    }
+
     const image = multimedia.find(
       item => item.format === NY_TIMES_TOP_STORY_IMAGE_FORMAT,
     );

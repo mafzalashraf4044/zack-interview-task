@@ -18,19 +18,13 @@ export default function About() {
           <br />
           <br />
           Here's how it works:
-          <ul>
-            <li>
-              Explore our selection of top news covering a wide range of topics,
-              from business to sports to technology.
-            </li>
-            <li>
-              Click on any news card to read the full article and stay
-              up-to-date with the latest developments.
-            </li>
-          </ul>
           <br />
-          Our team is dedicated to bringing you the news you care about. We
-          value your time and aim to make your news-reading experience seamless.
+          <br />
+          Explore our selection of top news covering a wide range of topics,
+          from business to sports to technology. Click on any news card to read
+          the full article and stay up-to-date with the latest developments. Our
+          team is dedicated to bringing you the news you care about. We value
+          your time and aim to make your news-reading experience seamless.
           Whether you're on your computer or mobile device, our app is designed
           for your convenience.
           <br />

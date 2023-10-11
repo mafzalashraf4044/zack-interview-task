@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuery, TError } from "@tanstack/react-query";
+import Spinner from "react-bootstrap/Spinner";
 
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
@@ -19,7 +20,7 @@ export default function Home() {
     toast.error(error.message);
   };
 
-  const { data: news } = useQuery(
+  const { data: news, isFetching } = useQuery(
     ["getNewsTopStories", section],
     () => getNewsTopStories(section),
     {
@@ -29,7 +30,7 @@ export default function Home() {
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
     }
-  ) as { data: NewsItem[] };
+  ) as { data: NewsItem[]; isFetching: boolean };
 
   const handleSectionChange = (section: NewsSection) => {
     setSection(section);
@@ -46,7 +47,13 @@ export default function Home() {
         </Card.Body>
       </Card>
 
-      <NewsList news={news} />
+      {isFetching ? (
+        <Spinner animation="grow" role="status" variant="success">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      ) : (
+        <NewsList news={news} />
+      )}
     </Container>
   );
 }
